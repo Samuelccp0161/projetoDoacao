@@ -10,15 +10,6 @@ import { ErrorStateMatcher } from '@angular/material/core';
 })
 export class AppComponent {
   title = 'projetoDoacao';
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-
-
-  matcher = new MyErrorStateMatcher();
-
-  forms!: FormGroup;
-
-  onSubmit(): void {
-  }
 }
 
 //imputs
