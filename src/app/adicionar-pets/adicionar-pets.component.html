@@ -1,61 +1,73 @@
 <div class="main-div">
-    <mat-card>
-        <mat-card-content> Cadastro Doa pet 
-          <!-- <form class="flex-column" [formGroup]="forms" (ngSubmit)="onSubmit()"> -->
-  
-          <!-- </form> -->
-  
-    <!--/ imputs Nome completo /--> 
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Nome completo</mat-label>
-        <input
-          matInput
-          placeholder="Nome completo"
-          id="nome-completo"
-        />
-      </mat-form-field>
-      <br>
-    
-      <!--/ /imputs Nome completo /--> 
+  <mat-card>
+    <app-content-header [subtitle]="'Cadastrar Pet'"></app-content-header>
 
-              <!--/ imputs numero telefone /--> 
-              <mat-form-field appearance="outline">
-                <mat-label>Número de telefone</mat-label>
-                <input
-                  matInput
-                  placeholder="Número de telefone"
-                  id="numero-telefone"
-                />
-              </mat-form-field>
-              <br>
-            
-              <!--/ /imputs telefone /--> 
+    <mat-card-content>
 
-    <!--/ imputs descrição do animal /-->
-  
-    <mat-form-field appearance="outline" class="descricao">
-      <mat-label>Descricao-pet</mat-label>
-      <input
-      
-        matInput
-        type="text"
-        placeholder="descricao"
-        id="descricao" 
-      />
-    </mat-form-field>
-    <br>
-    </div>
-    <!--/ /imputs descrição do animal /--> 
-    
-    <!--/ imputs botão /--> 
-    <div class="flex-row">
-      <section>
-        <button mat-raised-button color="primary">Adicionar</button>
-      </section>
-    </div>
-    <!--/ /imputs botão /--> 
-        </mat-card-content>
-    </mat-card>
-  </div>
-  <router-outlet></router-outlet>
+      <!-- </form> -->
+      <form (ngSubmit)="onSubmit()" #cadastroForm="ngForm" >
+        <!--/ imputs Nome completo /-->
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Nome do pet</mat-label>
+            <input 
+              name="nome"
+              [(ngModel)]="animal.nome"
+              matInput
+              placeholder="Nome do pet"
+              id="nome"
+              required="true"
+            />
+          </mat-form-field>
+          <br />
+
+          <!--/ /imputs Nome completo /-->
+
+          <!--/ imputs numero telefone /-->
+          <mat-form-field appearance="outline">
+            <mat-label>Número de telefone</mat-label>
+            <input
+              name="contato"
+              [(ngModel)]="animal.telefone"
+              matInput
+              placeholder="Número de telefone"
+              id="numero-telefone"
+              required="true"
+
+            />
+          </mat-form-field>
+          <br />
+
+
+          <mat-form-field appearance="outline" class="descricao">
+            <mat-label>Descricao-pet</mat-label>
+            <textarea 
+              matInput
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="5"
+            cdkAutosizeMaxRows="5"
+              name="descricao"
+              [(ngModel)]="animal.descricao"
+              placeholder="descricao"
+              id="descricao"
+              required="true"
+            ></textarea>
+          </mat-form-field>
+          <br />
+        </div>
+        <!--/ /imputs descrição do animal /-->
+
+        <!--/ imputs botão /-->
+        <div class="flex-row">
+          <section>
+            <button mat-raised-button color="primary" type="submit" [disabled]="cadastroForm.form.invalid">Adicionar</button>
+          </section>
+        </div>
+      </form>
+
+      <!--/ /imputs botão /-->
+    </mat-card-content>
+  </mat-card>
+</div>
+<router-outlet></router-outlet>
