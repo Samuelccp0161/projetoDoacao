@@ -1,71 +1,92 @@
 <div class="main-div">
-    <mat-card>
-        <mat-card-content> Cadastro Doa pet 
-    <!--/ imputs Nome completo /--> 
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Nome completo</mat-label>
-        <input
-          matInput
-          placeholder="Nome completo"
-          id="nome-completo"
-        />
-      </mat-form-field> 
-      <br>
-    
-      <!--/ /imputs Nome completo /--> 
+  <mat-card>
+    <mat-card-content>
+      Cadastro Doa pet
+      <!--/ imputs Nome completo /-->
+      <form (ngSubmit)="onCadastro()" #cadastroForm="ngForm">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Nome completo</mat-label>
+            <input
+              [(ngModel)]="nome"
+              name="nome"
+              matInput
+              placeholder="Nome completo"
+              id="nome-completo"
+              required="true"
 
-          <!--/ imputs email /--> 
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          placeholder="email"
-          type="emai"
-          id="email"
-        />
-      </mat-form-field>
-      <br>
-    
-      <!--/ /imputs email /--> 
+            />
+          </mat-form-field>
+          <br />
 
-              <!--/ imputs numero telefone /--> 
-              <mat-form-field appearance="outline">
-                <mat-label>Número de telefone</mat-label>
-                <input
-                  matInput
-                  placeholder="Número de telefone"
-                  id="numero-telefone"
-                />
-              </mat-form-field>
-              <br>
-            
-              <!--/ /imputs email /--> 
+          <!--/ /imputs Nome completo /-->
 
-    <!--/ imputs senha /-->
-  
-    <mat-form-field appearance="outline">
-      <mat-label>Senha</mat-label>
-      <input
-        matInput
-        type="password"
-        placeholder="Senha"
-        id="senha"
-      />
-    </mat-form-field>
-    <br>
-    </div>
-    <!--/ /imputs senha /--> 
-    
-    <!--/ imputs botão /--> 
-    <div class="flex-row">
-      <section>
-        <button mat-raised-button color="primary">Cadastrar</button>
-      </section>
-    </div>
-    <!--/ /imputs botão /--> 
-        </mat-card-content>
-    </mat-card>
-  </div>
-  <router-outlet></router-outlet>
-  
+          <!--/ imputs email /-->
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              [(ngModel)]="email"
+              name="email"
+              matInput
+              placeholder="email"
+              type="emai"
+              id="email"
+              required="true"
+
+            />
+          </mat-form-field>
+          <br />
+
+          <!--/ /imputs email /-->
+
+          <!--/ imputs numero telefone /-->
+          <mat-form-field appearance="outline">
+            <mat-label>Número de telefone</mat-label>
+            <input
+              [(ngModel)]="contato"
+              name="contato"
+              matInput
+              placeholder="Número de telefone"
+              id="numero-telefone"
+              required="true"
+
+            />
+          </mat-form-field>
+          <br />
+
+          <!--/ /imputs email /-->
+
+          <!--/ imputs senha /-->
+
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input
+              [(ngModel)]="senha"
+              name="senha"
+              matInput
+              type="password"
+              placeholder="Senha"
+              id="senha"
+              required="true"
+
+            />
+          </mat-form-field>
+          <br />
+        </div>
+        <!--/ /imputs senha /-->
+
+        <!--/ imputs botão /-->
+        <div class="flex-row">
+          <section>
+            <button type="submit" [disabled]="cadastroForm.form.invalid" mat-raised-button color="primary">
+              Cadastrar
+            </button>
+          </section>
+        </div>
+      </form>
+
+      <!--/ /imputs botão /-->
+    </mat-card-content>
+  </mat-card>
+</div>
+<router-outlet></router-outlet>

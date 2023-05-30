@@ -1,92 +1,33 @@
 <div class="main-div">
+  <mat-card>
+    <app-content-header [subtitle]="'Pets'"></app-content-header>
 
+    <mat-card-content class="principal">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle *ngFor="let pet of listaPets">
+          <mat-expansion-panel-header>
+            <mat-panel-title> Nome: {{ pet.nome }} </mat-panel-title>
+            <mat-panel-description>
+              Contato: {{ pet.telefone }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>
+            Descricao: <br />
+            {{ pet.descricao }}
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
 
-<mat-card>
-  <mat-card-content class="principal">
-    Doa Pet
-
-<!-- 
-    <mat-selection-list #listaDeElementos [multiple]="false">
-        <mat-list-option *ngFor="let elem of elementos" [value]="elem" style="height: fit-content;">
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <mat-card-title-group>
-                        <mat-card-title>{{elem.name}}</mat-card-title>
-                        <mat-card-subtitle>{{elem.symbol}}</mat-card-subtitle>
-                        <img
-                        mat-card-sm-image
-                        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                        />
-                    </mat-card-title-group>
-                </mat-card-header>
-                <mat-card-content>
-                    {{elem.name}}
-                </mat-card-content>
-            </mat-card>
-        </mat-list-option>
-    </mat-selection-list>
-    
-    
-    
-        <mat-card class="example-card" *ngIf="listaDeElementos.selectedOptions.selected[0]?.value as elem" >
-            <mat-card-header>
-                <mat-card-title-group>
-                    <mat-card-title>{{elem.name}}</mat-card-title>
-                    <mat-card-subtitle>{{elem.symbol}}</mat-card-subtitle>
-                    <img
-                    mat-card-sm-image
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                    />
-                </mat-card-title-group>
-            </mat-card-header>
-            <mat-card-content>
-                descrição do {{elem.name}}
-            </mat-card-content>
-        </mat-card> -->
-
-        <mat-accordion>
-            <mat-expansion-panel hideToggle *ngFor="let element of elementos">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        {{element.name}}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        {{element.position}}
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <p> Elemento: {{element.name}}, Peso: {{element.weight}}</p>
-                <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"/>
-            </mat-expansion-panel>
-        </mat-accordion>
-
-    <button
-      mat-mini-fab
-      color="primary"
-      aria-label="Example icon button with a menu icon"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-  </mat-card-content>
-</mat-card>
-<!-- </div> -->
-
-<!-- <div *ngFor="let elem of elementos">
-    <mat-card class="example-card">
-        <mat-card-header>
-            <mat-card-title-group>
-                <mat-card-title>{{elem.name}}</mat-card-title>
-                <mat-card-subtitle>{{elem.symbol}}</mat-card-subtitle>
-                <img
-                mat-card-sm-image
-                src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                />
-            </mat-card-title-group>
-        </mat-card-header>
-        <mat-card-content>
-            {{elem.position}}
-        </mat-card-content>
-    </mat-card>
-</div> -->
+      <div style="display: flex; justify-content: center; padding-top: 15px;">
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Example icon button with a menu icon"
+          routerLink="/adiciona-pet"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
-
-

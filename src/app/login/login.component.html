@@ -1,21 +1,20 @@
 <div class="main-div">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Doa Pet
-      </mat-card-title>
-    </mat-card-header>
+    <app-content-header [subtitle]="'Login'"></app-content-header>
     <mat-card-content>
       
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
         <!--/ imputs email /-->
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input
+            <input [(ngModel)]="this.email"
+              name="email"
               matInput
               type="email"
               placeholder="Email"
               id="email"
+              required="true"
             />
           </mat-form-field>
           <br />
@@ -26,11 +25,13 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input
+            <input [(ngModel)]="this.senha"
+              name="senha"
               matInput
               type="password"
               placeholder="Senha"
               id="senha"
+              required="true"
             />
           </mat-form-field>
           <br />
@@ -39,10 +40,14 @@
 
         <!--/ imputs botão /-->
         <div class="flex-row">
-          <button mat-raised-button type="submit" color="primary">
+          <button mat-raised-button [disabled]="loginForm.form.invalid" type="submit" color="primary">
             Entrar
           </button>
+          <button mat-raised-button color="primary" routerLink="cadastro">
+            Cadastrar
+          </button>
         </div>
+      </form>
       <!--/ /imputs botão /-->
     </mat-card-content>
   </mat-card>

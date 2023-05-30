@@ -19,6 +19,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';  
 import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion'; 
+import { HttpClientModule } from "@angular/common/http";
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatTableModule,
     MatPaginatorModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule,
+    TextFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

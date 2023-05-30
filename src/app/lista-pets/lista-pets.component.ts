@@ -1,23 +1,31 @@
-import { AfterViewChecked,Component, ViewChild } from '@angular/core';
+import { AfterViewChecked,Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ListarService } from './service/listar.service';
+import { Animal } from '../shared/animal';
 
 @Component({
   selector: 'app-lista-pets',
   templateUrl: './lista-pets.component.html',
   styleUrls: ['./lista-pets.component.scss']
 })
-export class ListaPetsComponent {
-  elementos = ELEMENT_DATA;
-// displayedColumns: string[] = ['name', 'endereco', 'contato', 'descricao'];
-displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+export class ListaPetsComponent implements OnInit{
+  listaPets: Animal[] = []
 
-@ViewChild(MatPaginator) paginator!: MatPaginator;
+  constructor(private listarService:ListarService) {}
 
-ngAfterViewInit(){
-  this.dataSource.paginator = this.paginator;
-}
+  ngOnInit(): void {
+    this.listarService.listar().subscribe({next: (lista) => this.listaPets = lista})
+  }
+//   elementos = ELEMENT_DATA;
+// dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+
+// @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+// ngAfterViewInit(){
+//   this.dataSource.paginator = this.paginator;
+// }
+
   
 }
 // export interface PeriodicElement{
